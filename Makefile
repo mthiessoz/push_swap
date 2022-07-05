@@ -6,18 +6,17 @@
 #    By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 16:37:51 by mthiesso          #+#    #+#              #
-#    Updated: 2022/06/23 17:20:11 by mthiesso         ###   ########.fr        #
+#    Updated: 2022/07/05 15:00:27 by mthiesso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------------- Sources -----------------
-PUSHSWAP			=		 push_swap.c
+SRCS				=		 push_swap.c movements.c parsing.c
 LIB					=        ./libft/libft.a
 LIBFT				=        $(MAKE) -C libft
 
 # ---------------- OBJS & Sources -----------
-SRC_PUSHSWAP			=        $(PUSHSWAP)
-OBJS_PUSHSWAP		=        $(SRC_PUSHSWAP:.c=.o)
+OBJS_PUSHSWAP		=        $(SRCS:.c=.o)
 
 # ---------------- Name && GCC --------------
 NAME				=        push_swap
@@ -44,8 +43,8 @@ start:
 		@$(START)
 		@$(LIBFT)
 
-push_swap: start $(OBJS_PUSHSWAP)
-		@$(CC) $(CFLAGS) -o $(NAME) $(PUSHSWAP) $(LIB)
+push_swap: 
+		@$(CC) $(SRCS) $(LIB) $(CFLAGS) -o $(NAME)
 		@$(COMPOK)
 
 clean:
