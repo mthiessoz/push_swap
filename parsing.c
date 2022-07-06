@@ -6,7 +6,7 @@
 /*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:49:40 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/05 14:49:52 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:20:47 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_stack	parse_stack(int argc, char **argv)
 	while (i >= 0)
 	{
 		stack.elements[i] = ft_atoi(argv[j]);
+		no_double(stack, j);
 		i--;
 		j++;
 	}
@@ -34,8 +35,8 @@ t_stack	parse_stack(int argc, char **argv)
 void	print_stack(t_stack stack)
 {
 	int	i;
-	ft_printf("----------\n");
 
+	ft_printf("----------\n");
 	if (stack.size == 0)
 		ft_printf("empty_stack\n");
 	else

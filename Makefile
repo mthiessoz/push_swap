@@ -6,12 +6,12 @@
 #    By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 16:37:51 by mthiesso          #+#    #+#              #
-#    Updated: 2022/07/05 15:00:27 by mthiesso         ###   ########.fr        #
+#    Updated: 2022/07/06 13:55:18 by mthiesso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------------- Sources -----------------
-SRCS				=		 push_swap.c movements.c parsing.c
+SRCS				=		 push_swap.c movements.c parsing.c errors.c
 LIB					=        ./libft/libft.a
 LIBFT				=        $(MAKE) -C libft
 
