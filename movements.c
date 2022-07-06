@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:49:30 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/05 16:48:49 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/06 22:47:48 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ void	rotate(t_stack stack)
 	int	last_index;
 	int	first_index;
 
-	last_index = 0;
-	first_index = stack.size - 1;
-	tmp = stack.elements[first_index];
+	last_index = stack.size - 1;
+	first_index = 0;
+	tmp = get(stack, first_index);
 	i = 0;
 	while (i <= stack.size)
 	{
-		stack.elements[first_index] = stack.elements[first_index - 1];
+		set(stack, first_index, get(stack, first_index + 1));
 		i++;
-		first_index--;
+		first_index++;
 	}
-	stack.elements[last_index] = tmp;
+	set(stack, last_index, tmp);
 }

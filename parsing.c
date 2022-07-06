@@ -3,32 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:49:40 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/06 17:20:47 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/07 00:33:14 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	parse_stack(int argc, char **argv)
+t_stack	parse_stack(int argc, char **argv, int *is_error)
 {
 	int		i;
 	int		j;
 	t_stack	stack;
+	char **checked_args;
 
-	j = 1;
-	stack.size = argc - 1;
+	checked_args = get_args(argc, argv);
+	j = 0;
+	stack.size = array_size(checked_args);
 	i = stack.size - 1;
 	stack.elements = malloc(sizeof(int) * stack.size);
 	while (i >= 0)
 	{
-		stack.elements[i] = ft_atoi(argv[j]);
-		no_double(stack, j);
+		if (check_not_non_digits(checked_args[j]) == 1) {
+			*is_error = 1;
+			return (stack);
+		}
+		stack.elements[i] = ft_atoi(checked_args[j]);
 		i--;
 		j++;
 	}
+	*is_error = no_double(stack);
 	return (stack);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:12:12 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/06 17:16:47 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/07 00:12:50 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,18 @@ int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
+	int is_error;
 
 	if (argc == 1)
 	{
 		ft_printf("Error\n");
-		return (0);
+		return (1);
 	}
-	stack_a = parse_stack(argc, argv);
+	stack_a = parse_stack(argc, argv, &is_error);
+	if (is_error == 1) {
+		ft_printf("Error\n");
+		return (1);
+	}
 	stack_b = init_stack(stack_a.size);
 	print_stack(stack_a);
 	print_stack(stack_b);
@@ -40,7 +45,7 @@ int	main(int argc, char **argv)
 	print_stack(stack_a);
 	print_stack(stack_b);*/
 	ft_printf("\ntesting rotate\n");
-	rotate(stack_b);
+	rotate(stack_a);
 	print_stack(stack_a);
 	print_stack(stack_b);
 	return (0);
