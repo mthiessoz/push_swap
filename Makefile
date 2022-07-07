@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marlene <marlene@student.42.fr>            +#+  +:+       +#+         #
+#    By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 16:37:51 by mthiesso          #+#    #+#              #
-#    Updated: 2022/07/06 22:48:45 by marlene          ###   ########.fr        #
+#    Updated: 2022/07/07 14:37:43 by mthiesso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------------- Sources -----------------
-SRCS				=		 push_swap.c movements.c parsing.c errors.c utils.c
+SRCS				=		 main.c movements.c parsing.c errors.c utils.c
 LIB					=        ./libft/libft.a
 LIBFT				=        $(MAKE) -C libft
 
