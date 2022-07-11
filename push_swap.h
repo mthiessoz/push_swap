@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:53:23 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/07 14:49:58 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/11 12:19:27 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,23 @@ void	push(t_stack *stack_source, t_stack *stack_dest);
 void	rotate(t_stack stack);
 void	clean_exit(t_stack stack);
 void	set(t_stack stack, int index, int value);
+void	reverse_rotate(t_stack stack);
+void	sa(t_stack stack_a);
+void	sb(t_stack stack_b);
+void	pa(t_stack *stack_a, t_stack *stack_b);
+void	pb(t_stack *stack_a, t_stack *stack_b);
+void	ra(t_stack stack_a);
+void	rb(t_stack stack_b);
+void	rra(t_stack stack_a);
+void	rrb(t_stack stack_b);
+void	sort3(t_stack *stack_to_sort);
+void 	sort2(t_stack *stack_to_sort);
+void	sort_simple(t_stack *stack_to_sort, t_stack *stack_buffer);
+void	sort_case(t_stack *stack_to_sort, t_stack *stack_buffer);
+void	push_min(t_stack *stack_to_sort, t_stack *stack_buffer);
+void    quick_sort(t_stack *stack_a, t_stack *stack_b);
+void    quick_sort_external(t_stack *stack_a, t_stack *stack_b);
+
 
 int		check_errors(t_stack stack);
 int		no_double(t_stack stack);
@@ -42,6 +59,12 @@ int		get(t_stack stack, int index);
 int		check_not_non_digits(char *str);
 int		array_size(char **array);
 int		already_sorted(t_stack stack);
+int		get_case_id(int first, int second, int third);
+int		get_min(t_stack stack_src);
+int		partition(t_stack *stack_to_sort, t_stack *stack_buffer);
+int		get_pivot_index(t_stack stack_to_sort);
+
+double 	get_mean(t_stack stack);
 
 char	**get_args(int argc, char **argv);
 

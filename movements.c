@@ -57,3 +57,23 @@ void	rotate(t_stack stack)
 	}
 	set(stack, last_index, tmp);
 }
+
+void	reverse_rotate(t_stack stack)
+{
+	int	tmp;
+	int	i;
+	int	last_index;
+	int	first_index;
+
+	last_index = stack.size - 1;
+	first_index = 0;
+	tmp = get(stack, last_index);
+	i = 0;
+	while (i <= stack.size)
+	{
+		set(stack, last_index, get(stack, last_index - 1));
+		i++;
+		last_index--;
+	}
+	set(stack, first_index, tmp);
+}

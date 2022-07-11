@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:58:57 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/07 17:16:34 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/09 16:31:51 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,15 @@ int	no_double(t_stack stack)
 int	already_sorted(t_stack stack)
 {
 	int	i;
-	int	count;
 
-	i = stack.size - 1;
-	count = 0;
-	while (i != 0)
+	i = 0;
+	while (i < stack.size - 1)
 	{
-		if (stack.elements[i] < stack.elements[i - 1])
-			count++;
-		i--;
+		if (get(stack, i + 1) < get(stack, i))
+			return (0);
+		i++;
 	}
-	if (count == stack.size - 1)
-		return (1);
-	else
-		return (0);
+	return (1);
 }
 
 void	clean_exit(t_stack stack)

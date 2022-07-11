@@ -3,15 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+         #
+#    By: marlene <marlene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 16:37:51 by mthiesso          #+#    #+#              #
-#    Updated: 2022/07/07 14:37:43 by mthiesso         ###   ########.fr        #
+#    Updated: 2022/07/09 13:17:17 by marlene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------------- Sources -----------------
-SRCS				=		 main.c movements.c parsing.c errors.c utils.c
+SRCS				=		 main.c movements.c parsing.c errors.c utils.c \
+							sorting_3.c print_movements.c print_movements_2.c \
+							sorting_5.c sorting.c quick_sort.c
 LIB					=        ./libft/libft.a
 LIBFT				=        $(MAKE) -C libft
 
