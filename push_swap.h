@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:53:23 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/11 12:19:27 by marlene          ###   ########.fr       */
+/*   Updated: 2022/07/11 19:28:31 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,12 @@ void	rb(t_stack stack_b);
 void	rra(t_stack stack_a);
 void	rrb(t_stack stack_b);
 void	sort3(t_stack *stack_to_sort);
-void 	sort2(t_stack *stack_to_sort);
+void	sort2(t_stack *stack_to_sort);
 void	sort_simple(t_stack *stack_to_sort, t_stack *stack_buffer);
 void	sort_case(t_stack *stack_to_sort, t_stack *stack_buffer);
 void	push_min(t_stack *stack_to_sort, t_stack *stack_buffer);
-void    quick_sort(t_stack *stack_a, t_stack *stack_b);
-void    quick_sort_external(t_stack *stack_a, t_stack *stack_b);
-
+void	quick_sort(t_stack *stack_a, t_stack *stack_b);
+void	quick_sort_external(t_stack *stack_a, t_stack *stack_b);
 
 int		check_errors(t_stack stack);
 int		no_double(t_stack stack);
@@ -64,7 +63,7 @@ int		get_min(t_stack stack_src);
 int		partition(t_stack *stack_to_sort, t_stack *stack_buffer);
 int		get_pivot_index(t_stack stack_to_sort);
 
-double 	get_mean(t_stack stack);
+double	get_mean(t_stack stack);
 
 char	**get_args(int argc, char **argv);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:12:12 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/11 12:47:09 by marlene          ###   ########.fr       */
+/*   Updated: 2022/07/11 19:47:25 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,10 @@ int	main(int argc, char **argv)
 	}
 	if (already_sorted(stack_a) == 1)
 		return (0);
-	
 	stack_b = init_stack(stack_a.size);
-
-	/*print_stack(stack_a);
-	print_stack(stack_b);
-
-	ft_printf("Testing quick sort :\n");*/
-
 	sort_case(&stack_a, &stack_b);
-
 	ft_printf("\n Finished quick sort\n");
-
 	print_stack(stack_a);
 	print_stack(stack_b);
-
 	return (0);
 }
