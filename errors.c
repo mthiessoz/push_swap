@@ -6,7 +6,7 @@
 /*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:58:57 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/11 19:26:24 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:40:07 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,16 @@ void	clean_exit(t_stack stack)
 	free(stack.elements);
 }
 
-/*int	numbers_limit(t_stack stack)
+int	numbers_limit(char *str)
 {
+	int	i;
 
-}*/
+	i = 0;
+	while (str[i])
+	{
+		if (ft_atol(&str[i]) > INT_MAX || ft_atol(&str[i]) < INT_MIN)
+			return (1);
+		i++;
+	}
+	return (0);
+}

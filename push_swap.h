@@ -6,7 +6,7 @@
 /*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:53:23 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/11 19:28:31 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:38:57 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # include "./libft/libft.h"
 
 typedef struct s_stack
@@ -62,6 +63,7 @@ int		get_case_id(int first, int second, int third);
 int		get_min(t_stack stack_src);
 int		partition(t_stack *stack_to_sort, t_stack *stack_buffer);
 int		get_pivot_index(t_stack stack_to_sort);
+int		numbers_limit(char *str);
 
 double	get_mean(t_stack stack);
 

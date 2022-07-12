@@ -6,7 +6,7 @@
 /*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:49:40 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/11 19:26:11 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:43:08 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_stack	parse_stack(int argc, char **argv, int *is_error)
 			*is_error = 1;
 			return (stack);
 		}
-		stack.elements[i] = ft_atoi(checked_args[j]);
+		stack.elements[i] = ft_atol(checked_args[j]);
 		i--;
 		j++;
 	}

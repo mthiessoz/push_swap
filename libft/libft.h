@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:05:15 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/07 00:04:45 by marlene          ###   ########.fr       */
+/*   Updated: 2022/07/12 16:21:47 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int				ft_printstr(char *str);
 int				ft_printf(const char *format, ...);
 int				ft_printnbr(int nb);
 int				ft_hexa_printnbr(unsigned long int nb, int up);
+
+long			ft_atol(const char *str);
 
 unsigned int	ft_unsigned_printnbr(unsigned int nb);
 

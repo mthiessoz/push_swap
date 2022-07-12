@@ -6,7 +6,7 @@
 /*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:04:46 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/11 19:26:42 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:11:32 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sort_simple(t_stack *stack_to_sort, t_stack *stack_buffer)
 	i = 0;
 	while (i < nb_min)
 	{
-		pb(stack_to_sort, stack_buffer);
+		pa(stack_to_sort, stack_buffer);
 		i++;
 	}
 }
@@ -36,16 +36,30 @@ void	sort_simple(t_stack *stack_to_sort, t_stack *stack_buffer)
 void	push_min(t_stack *stack_to_sort, t_stack *stack_buffer)
 {
 	int	min_index;
-	int	nb_rot;
 
-	nb_rot = 0;
-	min_index = get_min(*stack_to_sort);
-	while (nb_rot < min_index)
+	while (get_min(*stack_to_sort) != stack_to_sort->size - 1)
 	{
-		ra(*stack_to_sort);
-		nb_rot++;
+		min_index = get_min(*stack_to_sort);
+		if (min_index > stack_to_sort->size / 2)
+		{
+			if (min_index == stack_to_sort->size - 1)
+			{
+				rra(*stack_to_sort);
+				min_index = 0;
+			}
+			else
+			{
+				rra(*stack_to_sort);
+				min_index++;
+			}
+		}
+		else
+		{
+			ra(*stack_to_sort);
+			min_index--;
+		}
 	}
-	pa(stack_to_sort, stack_buffer);
+	pb(stack_to_sort, stack_buffer);
 }
 
 int	get_min(t_stack stack_src)

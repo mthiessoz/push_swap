@@ -6,7 +6,7 @@
 /*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 13:16:41 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/11 19:50:08 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:00:16 by mthiesso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	partition(t_stack *stack_to_sort, t_stack *stack_buffer)
 		top = get(*stack_to_sort, 0);
 		if (top > pivot)
 		{
-			pa(stack_to_sort, stack_buffer);
+			pb(stack_to_sort, stack_buffer);
 			count++;
 		}
 		else
@@ -44,12 +44,13 @@ void	quick_sort(t_stack *stack_a, t_stack *stack_b)
 	int	c;
 	int	i;
 
+	c = 0;
 	if (stack_a->size <= 5)
 	{
 		sort_case(stack_a, stack_b);
 		while (stack_a->size > 0)
 		{
-			pa(stack_a, stack_b);
+			pb(stack_a, stack_b);
 			rb(*stack_b);
 		}
 	}
@@ -59,16 +60,21 @@ void	quick_sort(t_stack *stack_a, t_stack *stack_b)
 		quick_sort(stack_a, stack_b);
 		while (stack_a->size > 0)
 		{
-			pa(stack_a, stack_b);
+			pb(stack_a, stack_b);
 			rb(*stack_b);
 		}
 		i = 0;
 		while (i < c)
 		{
-			pb(stack_a, stack_b);
+			pa(stack_a, stack_b);
 			i++;
 		}
 		quick_sort(stack_a, stack_b);
+	}
+	while (stack_b->size > 0)
+	{
+		pa(stack_a, stack_b);
+		ra(*stack_a);
 	}
 }
 
@@ -82,7 +88,7 @@ int	get_pivot_index(t_stack stack_to_sort)
 
 	diff = 0.0;
 	i = 0;
-	min_diff = 32767.0;
+	min_diff = 2147483647.0;
 	mean = get_mean(stack_to_sort);
 	while (i < stack_to_sort.size)
 	{
@@ -124,7 +130,7 @@ void	quick_sort_external(t_stack *stack_a, t_stack *stack_b)
 		sort_case(stack_a, stack_b);
 		while (stack_a->size > 0)
 		{
-			pa(stack_a, stack_b);
+			pb(stack_a, stack_b);
 			rb(*stack_b);
 		}
 	}
@@ -134,13 +140,13 @@ void	quick_sort_external(t_stack *stack_a, t_stack *stack_b)
 		quick_sort(stack_b, stack_a);
 		while (stack_b->size > 0)
 		{
-			pa(stack_b, stack_a);
+			pb(stack_b, stack_a);
 			rb(*stack_a);
 		}
 		i = 0;
 		while (i < c)
 		{
-			pb(stack_b, stack_a);
+			pa(stack_b, stack_a);
 			i++;
 		}
 		quick_sort(stack_b, stack_a);
