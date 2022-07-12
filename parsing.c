@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:49:40 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/12 16:43:08 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:36:12 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ t_stack	parse_stack(int argc, char **argv, int *is_error)
 	int		j;
 	t_stack	stack;
 	char	**checked_args;
+	int		checked_argc;
 
-	checked_args = get_args(argc, argv);
+	checked_args = get_args(argc, argv, &checked_argc);
 	j = 0;
-	stack.size = array_size(checked_args);
+	stack.size = checked_argc;
 	i = stack.size - 1;
 	stack.elements = malloc(sizeof(int) * stack.size);
 	while (i >= 0)
@@ -36,6 +37,7 @@ t_stack	parse_stack(int argc, char **argv, int *is_error)
 		j++;
 	}
 	*is_error = no_double(stack);
+	free_args(checked_args, stack.size);
 	return (stack);
 }
 

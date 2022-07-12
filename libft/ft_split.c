@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 12:47:39 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/07 16:30:38 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:28:45 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nbwords(char const *s, char c)
+int	ft_nbwords(char const *s, char c)
 {
 	int	i;
 	int	words;

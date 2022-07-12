@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:58:57 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/12 16:40:07 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:00:55 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	no_double(t_stack stack)
 		{
 			if (stack.elements[i] == stack.elements[j])
 			{
-				clean_exit(stack);
+				clean(stack);
 				return (1);
 			}
 			j++;
@@ -67,11 +67,6 @@ int	already_sorted(t_stack stack)
 		i++;
 	}
 	return (1);
-}
-
-void	clean_exit(t_stack stack)
-{
-	free(stack.elements);
 }
 
 int	numbers_limit(char *str)

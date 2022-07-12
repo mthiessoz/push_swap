@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 13:16:41 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/12 16:00:16 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 22:44:27 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	partition(t_stack *stack_to_sort, t_stack *stack_buffer)
 	int	top;
 	int	count;
 
-	pivot = get(*stack_to_sort, get_pivot_index(*stack_to_sort));
+	pivot = get_median(*stack_to_sort);
 	nb_op = stack_to_sort->size;
 	i = 0;
 	count = 0;
@@ -42,39 +42,19 @@ int	partition(t_stack *stack_to_sort, t_stack *stack_buffer)
 void	quick_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	c;
-	int	i;
-
-	c = 0;
-	if (stack_a->size <= 5)
+    
+	if (stack_a->size <= get_sort_simple_treshold())
 	{
 		sort_case(stack_a, stack_b);
-		while (stack_a->size > 0)
-		{
-			pb(stack_a, stack_b);
-			rb(*stack_b);
-		}
+		push_all_reverse_a_to_b(stack_a, stack_b);
 	}
 	else
 	{
-		c = partition(stack_a, stack_b);
+		c = partition_2(stack_a, stack_b);
 		quick_sort(stack_a, stack_b);
-		while (stack_a->size > 0)
-		{
-			pb(stack_a, stack_b);
-			rb(*stack_b);
-		}
-		i = 0;
-		while (i < c)
-		{
-			pa(stack_a, stack_b);
-			i++;
-		}
+        push_all_reverse_a_to_b(stack_a, stack_b);
+        push_n_b_to_a(stack_a, stack_b, c);
 		quick_sort(stack_a, stack_b);
-	}
-	while (stack_b->size > 0)
-	{
-		pa(stack_a, stack_b);
-		ra(*stack_a);
 	}
 }
 
@@ -105,50 +85,62 @@ int	get_pivot_index(t_stack stack_to_sort)
 	return (min_diff_index);
 }
 
-double	get_mean(t_stack stack)
+int get_median(t_stack stack)
 {
-	int		i;
-	double	sum;
+    int i;
+    int j;
+    int nb_smaller;
+    int nb_larger;
 
-	i = 0;
-	sum = 0.0;
-	while (i < stack.size)
-	{
-		sum += (double)get(stack, i);
-		i++;
-	}
-	return (sum / (double)stack.size);
+    i = 0;
+    while (i < stack.size)
+    {
+        j = 0;
+        nb_smaller = 0;
+        nb_larger = 0;
+        while (j < stack.size)
+        {
+            if (i != j && get(stack, i) > get(stack, j))
+                nb_smaller++;
+            else if (i != j)
+                nb_larger++;
+            j++;
+        }
+        if ((nb_larger - nb_smaller) >= -1 && (nb_larger - nb_smaller) <= 1)
+            return(get(stack, i));
+        i++;
+    }
+    return (-1);
 }
 
-void	quick_sort_external(t_stack *stack_a, t_stack *stack_b)
+int get_first_index_larger(t_stack stack_to_sort, int value)
 {
-	int	c;
-	int	i;
+    int i;
 
-	if (stack_a->size <= 5)
-	{
-		sort_case(stack_a, stack_b);
-		while (stack_a->size > 0)
-		{
-			pb(stack_a, stack_b);
-			rb(*stack_b);
-		}
-	}
-	else
-	{
-		c = partition(stack_a, stack_b);
-		quick_sort(stack_b, stack_a);
-		while (stack_b->size > 0)
-		{
-			pb(stack_b, stack_a);
-			rb(*stack_a);
-		}
-		i = 0;
-		while (i < c)
-		{
-			pa(stack_b, stack_a);
-			i++;
-		}
-		quick_sort(stack_b, stack_a);
-	}
+    i = 0;
+    while (i < stack_to_sort.size - 1)
+    {
+        if (get(stack_to_sort, i) > value)
+            return (i);
+        i++;
+    }
+    return (-1);
+}
+
+int partition_2(t_stack *stack_to_sort, t_stack *stack_buffer)
+{
+    int first_index_larger;
+    int count;
+    int pivot;
+
+    pivot = get_median(*stack_to_sort);
+    first_index_larger = get_first_index_larger(*stack_to_sort, pivot);;
+    count = 0;
+    while (first_index_larger != -1)
+    {
+        push_index(stack_to_sort, stack_buffer, first_index_larger);
+        first_index_larger = get_first_index_larger(*stack_to_sort, pivot);
+        count++;
+    }
+    return (count);
 }

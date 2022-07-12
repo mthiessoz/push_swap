@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:12:12 by mthiesso          #+#    #+#             */
-/*   Updated: 2022/07/12 17:00:35 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:39:22 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int	main(int argc, char **argv)
 	ft_printf("\n Finished\n");
 	print_stack(stack_a);
 	print_stack(stack_b);
+	clean(stack_a);
+	clean(stack_b);
 	return (0);
 }

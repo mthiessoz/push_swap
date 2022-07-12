@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_5.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:04:46 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/12 18:11:32 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/12 20:17:11 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,41 +25,7 @@ void	sort_simple(t_stack *stack_to_sort, t_stack *stack_buffer)
 		i++;
 	}
 	sort3(stack_to_sort);
-	i = 0;
-	while (i < nb_min)
-	{
-		pa(stack_to_sort, stack_buffer);
-		i++;
-	}
-}
-
-void	push_min(t_stack *stack_to_sort, t_stack *stack_buffer)
-{
-	int	min_index;
-
-	while (get_min(*stack_to_sort) != stack_to_sort->size - 1)
-	{
-		min_index = get_min(*stack_to_sort);
-		if (min_index > stack_to_sort->size / 2)
-		{
-			if (min_index == stack_to_sort->size - 1)
-			{
-				rra(*stack_to_sort);
-				min_index = 0;
-			}
-			else
-			{
-				rra(*stack_to_sort);
-				min_index++;
-			}
-		}
-		else
-		{
-			ra(*stack_to_sort);
-			min_index--;
-		}
-	}
-	pb(stack_to_sort, stack_buffer);
+	push_n_b_to_a(stack_to_sort, stack_buffer, nb_min);
 }
 
 int	get_min(t_stack stack_src)
