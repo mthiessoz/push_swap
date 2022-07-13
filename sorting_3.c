@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthiesso <mthiesso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:05:18 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/11 19:27:56 by mthiesso         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:09:01 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ void	sort3(t_stack *stack_to_sort)
 		get(*stack_to_sort, 2));
 	if (case_id == 1)
 	{
-		rra(*stack_to_sort);
-		sa(*stack_to_sort);
+		reverse_rotate(*stack_to_sort);
+		swap(*stack_to_sort);
 	}
 	else if (case_id == 2)
-		sa(*stack_to_sort);
+		swap(*stack_to_sort);
 	else if (case_id == 3)
-		rra(*stack_to_sort);
+		reverse_rotate(*stack_to_sort);
 	else if (case_id == 4)
-		ra(*stack_to_sort);
+		rotate(*stack_to_sort);
 	else if (case_id == 5)
 	{
-		sa(*stack_to_sort);
-		rra(*stack_to_sort);
+		swap(*stack_to_sort);
+		reverse_rotate(*stack_to_sort);
 	}
 }
 

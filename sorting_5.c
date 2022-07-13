@@ -6,7 +6,7 @@
 /*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:04:46 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/12 20:17:11 by marlene          ###   ########.fr       */
+/*   Updated: 2022/07/13 13:36:18 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sort_simple(t_stack *stack_to_sort, t_stack *stack_buffer)
 		i++;
 	}
 	sort3(stack_to_sort);
-	push_n_b_to_a(stack_to_sort, stack_buffer, nb_min);
+	push_n(stack_buffer, stack_to_sort, nb_min);
 }
 
 int	get_min(t_stack stack_src)

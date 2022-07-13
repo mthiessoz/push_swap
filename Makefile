@@ -6,13 +6,13 @@
 #    By: marlene <marlene@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/20 16:37:51 by mthiesso          #+#    #+#              #
-#    Updated: 2022/07/12 23:47:18 by marlene          ###   ########.fr        #
+#    Updated: 2022/07/13 14:56:05 by marlene          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----------------- Sources -----------------
 SRCS				=		 main.c movements.c parsing.c errors.c utils.c \
-							sorting_3.c print_movements.c print_movements_2.c \
+							sorting_3.c \
 							sorting_5.c sorting.c quick_sort.c stack_utils.c \
 							stack_utils_2.c
 LIB					=        ./libft/libft.a
@@ -24,7 +24,7 @@ OBJS_PUSHSWAP		=        $(SRCS:.c=.o)
 # ---------------- Name && GCC --------------
 NAME				=        push_swap
 CC					=        gcc
-CFLAGS				=        -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS				=        -Wall -Wextra -Werror
 # ---------------- Couleurs -----------------
 GREEN				=        \033[1;32m
 RED					=        \033[1;31m

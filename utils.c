@@ -6,24 +6,26 @@
 /*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 22:47:21 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/12 23:51:18 by marlene          ###   ########.fr       */
+/*   Updated: 2022/07/13 14:29:16 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**get_args(int argc, char **argv, int *new_argc)
+char	**get_args(int argc, char **argv, int *new_argc, int *must_free)
 {
 	char	**argvm1;
 	int		i;
 
 	if (argc == 2)
 	{
+		*must_free = 1;
 		*new_argc = ft_nbwords(argv[1], ' ');
 		argvm1 = ft_split(argv[1], ' ');
 	}
 	else
 	{
+		*must_free = 0;
 		*new_argc = argc - 1;
 		argvm1 = malloc(sizeof(char *) * (argc - 1));
 		i = 0;
@@ -34,19 +36,6 @@ char	**get_args(int argc, char **argv, int *new_argc)
 		}
 	}
 	return (argvm1);
-}
-
-int	array_size(char **array)
-{
-	// int	i;
-
-	// i = 0;
-	// while (array[i])
-	// {
-	// 	i++;
-	// }
-	// return (i);
-	return (sizeof(array) / sizeof(char*));
 }
 
 void	free_args(char **str, int length)
@@ -60,4 +49,9 @@ void	free_args(char **str, int length)
 		i++;
 	}
 	free(str);
+}
+
+void	clean(t_stack stack)
+{
+	free(stack.elements);
 }

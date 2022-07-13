@@ -6,54 +6,29 @@
 /*   By: marlene <marlene@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 13:16:41 by marlene           #+#    #+#             */
-/*   Updated: 2022/07/12 22:44:27 by marlene          ###   ########.fr       */
+/*   Updated: 2022/07/13 13:37:37 by marlene          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	partition(t_stack *stack_to_sort, t_stack *stack_buffer)
-{
-	int	pivot;
-	int	i;
-	int	nb_op;
-	int	top;
-	int	count;
-
-	pivot = get_median(*stack_to_sort);
-	nb_op = stack_to_sort->size;
-	i = 0;
-	count = 0;
-	while (i < nb_op)
-	{
-		top = get(*stack_to_sort, 0);
-		if (top > pivot)
-		{
-			pb(stack_to_sort, stack_buffer);
-			count++;
-		}
-		else
-			ra(*stack_to_sort);
-		i++;
-	}
-	return (count);
-}
-
 void	quick_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	c;
     
-	if (stack_a->size <= get_sort_simple_treshold())
+	if (stack_b->size <= get_sort_simple_treshold())
 	{
-		sort_case(stack_a, stack_b);
-		push_all_reverse_a_to_b(stack_a, stack_b);
+        while (stack_b->size > 0)
+        {
+            push_min(stack_b, stack_a);
+            rotate(*stack_a);
+        }
 	}
 	else
 	{
-		c = partition_2(stack_a, stack_b);
+		c = partition(stack_b, stack_a);
 		quick_sort(stack_a, stack_b);
-        push_all_reverse_a_to_b(stack_a, stack_b);
-        push_n_b_to_a(stack_a, stack_b, c);
+        push_n(stack_a, stack_b, c);
 		quick_sort(stack_a, stack_b);
 	}
 }
@@ -127,7 +102,7 @@ int get_first_index_larger(t_stack stack_to_sort, int value)
     return (-1);
 }
 
-int partition_2(t_stack *stack_to_sort, t_stack *stack_buffer)
+int partition(t_stack *stack_to_sort, t_stack *stack_buffer)
 {
     int first_index_larger;
     int count;
